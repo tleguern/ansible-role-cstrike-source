@@ -1,0 +1,35 @@
+---
+- block:
+  - name: Check if Counter-Strike Source dedicated server is installed
+    stat:
+      path: "/home/{{ steamcmd_user }}/.steam/SteamApps/common/Counter-Strike Source Dedicated Server"
+    register: __cstrikesource_exists
+
+  - name: Install Counter-Strike Source dedicated server
+    command: "{{ steamcmd_bin }} +login anonymous +app_update 232330 +validate +quit"
+    when: __cstrikesource_exists.stat.exists == False
+
+  - name: Ensure Counter-Strike Source dedicated server is up to date
+    command: "{{ steamcmd_bin }} +login anonymous +app_update 232330 +quit"
+    register: __cstrikesource_update
+    changed_when: "'already up to date' not in __cstrikesource_update.stdout"
+    when: __cstrikesource_exists.stat.exists == False
+  become_user: "{{ steamcmd_user }}"
+
+- name: Ensure motd.txt is installed
+  template:
+    dest: "/home/{{ steamcmd_user }}/.steam/SteamApps/common/Counter-Strike Source Dedicated Server/cstrike/cfg/motd.txt"
+    src: motd.txt.j2
+    owner: "{{ steamcmd_user }}"
+
+- name: Ensure mapcycle.txt is installed
+  template:
+    dest: "/home/{{ steamcmd_user }}/.steam/SteamApps/common/Counter-Strike Source Dedicated Server/cstrike/cfg/mapcycle.txt"
+    src: mapcycle.txt.j2
+    owner: "{{ steamcmd_user }}"
+
+- name: Ensure server.cfg is installed
+  template:
+    dest: "/home/{{ steamcmd_user }}/.steam/SteamApps/common/Counter-Strike Source Dedicated Server/cstrike/cfg/server.cfg"
+    src: server.cfg.j2
+    owner: "{{ steamcmd_user }}"
