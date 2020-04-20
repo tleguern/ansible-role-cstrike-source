@@ -29,18 +29,24 @@
     dest: "/home/{{ steamcmd_user }}/cstrike-source/cstrike/cfg/motd.txt"
     src: motd.txt.j2
     owner: "{{ steamcmd_user }}"
+    group: "{{ steamcmd_user }}"
+  notify: Restart cstrike-source
 
 - name: Ensure mapcycle.txt is installed
   template:
     dest: "/home/{{ steamcmd_user }}/cstrike-source/cstrike/cfg/mapcycle.txt"
     src: mapcycle.txt.j2
     owner: "{{ steamcmd_user }}"
+    group: "{{ steamcmd_user }}"
+  notify: Restart cstrike-source
 
 - name: Ensure server.cfg is installed
   template:
     dest: "/home/{{ steamcmd_user }}/cstrike-source/cstrike/cfg/server.cfg"
     src: server.cfg.j2
     owner: "{{ steamcmd_user }}"
+    group: "{{ steamcmd_user }}"
+  notify: Restart cstrike-source
 
 - name: Ensure systemd unit is installed
   template:
