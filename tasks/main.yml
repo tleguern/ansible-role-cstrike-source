@@ -16,20 +16,28 @@
     when: __cstrikesource_exists.stat.exists == False
   become_user: "{{ steamcmd_user }}"
 
+- name: Create a symlink to steam home directory
+  file:
+    src: "/home/{{ steamcmd_user }}/.steam/SteamApps/common/Counter-Strike Source Dedicated Server"
+    dest: "/home/{{ steamcmd_user }}/cstrike-source"
+    owner: "{{ steamcmd_user }}"
+    group: "{{ steamcmd_user }}"
+    state: link
+
 - name: Ensure motd.txt is installed
   template:
-    dest: "/home/{{ steamcmd_user }}/.steam/SteamApps/common/Counter-Strike Source Dedicated Server/cstrike/cfg/motd.txt"
+    dest: "/home/{{ steamcmd_user }}/cstrike-source/cstrike/cfg/motd.txt"
     src: motd.txt.j2
     owner: "{{ steamcmd_user }}"
 
 - name: Ensure mapcycle.txt is installed
   template:
-    dest: "/home/{{ steamcmd_user }}/.steam/SteamApps/common/Counter-Strike Source Dedicated Server/cstrike/cfg/mapcycle.txt"
+    dest: "/home/{{ steamcmd_user }}/cstrike-source/cstrike/cfg/mapcycle.txt"
     src: mapcycle.txt.j2
     owner: "{{ steamcmd_user }}"
 
 - name: Ensure server.cfg is installed
   template:
-    dest: "/home/{{ steamcmd_user }}/.steam/SteamApps/common/Counter-Strike Source Dedicated Server/cstrike/cfg/server.cfg"
+    dest: "/home/{{ steamcmd_user }}/cstrike-source/cstrike/cfg/server.cfg"
     src: server.cfg.j2
     owner: "{{ steamcmd_user }}"
