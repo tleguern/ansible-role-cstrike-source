@@ -61,13 +61,13 @@ There is no default value.
 
 Example:
 
-``
+```
 hostname "My Counter-Strike Server"
 rcon_password mypassword
 mp_friendlyfire 1
 mp_allowNPCs 0
 mp_autoteambalance 1
-``
+```
 
 # Dependencies
 
