@@ -1,7 +1,7 @@
 ---
 steamcmd_user: steam
 steamcmd_bin: /usr/games/steamcmd
-cstrike_motd: |
+cstrike_source_motd: |
   <html>
   <head>
     <title>Counter-Strike: Source</title>
@@ -10,5 +10,5 @@ cstrike_motd: |
     <pre>Who needs Global Offensive anyway?</pre>
   </body>
   </html>
-cstrike_mapcycle: ""
-cstrike_server_cfg: ""
+cstrike_source_mapcycle: ""
+cstrike_source_server_cfg: ""
