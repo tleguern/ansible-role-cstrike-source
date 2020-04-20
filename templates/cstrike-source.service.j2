@@ -1,0 +1,12 @@
+[Unit]
+Description=Counter-Strike Source Dedicated Server
+Documentation=https://developer.valvesoftware.com/wiki/Source_Dedicated_Server
+After=syslog.target network.target
+
+[Service]
+User={{ steamcmd_user }}
+ExecStart=/home/{{ steamcmd_user }}/cstrike-source/srcds_run -console -game cstrike +map de_dust2 +maxplayers 12 -usercon -port {{ cstrike_source_port }} +ip {{ cstrike_source_ip }} +net_public_adr {{ cstrike_source_ip }}
+KillMode=control-group
+
+[Install]
+WantedBy=default.target

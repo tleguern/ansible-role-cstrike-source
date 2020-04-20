@@ -41,3 +41,21 @@
     dest: "/home/{{ steamcmd_user }}/cstrike-source/cstrike/cfg/server.cfg"
     src: server.cfg.j2
     owner: "{{ steamcmd_user }}"
+
+- name: Ensure systemd unit is installed
+  template:
+    src: cstrike-source.service.j2
+    dest: /etc/systemd/system/cstrike-source.service
+  notify: Reload systemd
+
+- meta: flush_handlers
+
+- name: Ensure cstrike-source is enabled at boot
+  service:
+    name: cstrike-source
+    enabled: yes
+
+- name: Ensure cstrike-source is started
+  service:
+    name: cstrike-source
+    state: started
