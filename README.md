@@ -17,6 +17,7 @@ An ansible role dedicated to the installation of SteamCMD such as [ansible-steam
 | `cstrike_source_server_cfg` | Server configuration | See below |
 | `cstrike_source_port` | Network port | `27015` |
 | `cstrike_source_ip` | IP address to listen on | `0.0.0.0` |
+| `cstrike_source_extra_mapcycles` | Configuration of extra mapcycle | See below |
 
 ### `cstrike_source_motd`
 
@@ -68,6 +69,27 @@ mp_friendlyfire 1
 mp_allowNPCs 0
 mp_autoteambalance 1
 ```
+
+### `cstrike_source_extra_mapcycles`
+
+A list of hashes containing two keys: `name` and `content`.
+The first will be used as a prefix to form a new mapcycle file named `mapcycle_{{ name }}.txt` and containing `{{ content }}`.
+
+Example:
+
+```
+cstrike_source_extra_mapcycles:
+  - name: deathrun
+    content: |
+      deathrun_temple
+      deathrun_goldfever
+  - name: dustonly
+    content: |
+      de_dust
+      de_dust2
+```
+
+These files can later be used with rcon, using the `mapcyclefile` CVAR.
 
 # Dependencies
 

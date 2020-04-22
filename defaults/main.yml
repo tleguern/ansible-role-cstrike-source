@@ -14,3 +14,5 @@ cstrike_source_mapcycle: ""
 cstrike_source_server_cfg: ""
 cstrike_source_port: 27015
 cstrike_source_ip: 0.0.0.0
+
+cstrike_source_extra_mapcycles: []

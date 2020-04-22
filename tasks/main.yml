@@ -48,6 +48,28 @@
     group: "{{ steamcmd_user }}"
   notify: Restart cstrike-source
 
+- block:
+  - name: Ensure extra mapcycle files are installed
+    template:
+      dest: "/home/{{ steamcmd_user }}/cstrike-source/cstrike/cfg/mapcycle_{{ item.name }}.txt"
+      src: extra_mapcycle.txt.j2
+      owner: "{{ steamcmd_user }}"
+      group: "{{ steamcmd_user }}"
+    loop: "{{ cstrike_source_extra_mapcycles }}"
+    loop_control:
+      label: "{{ item.name }}"
+    when: 'item.state is not defined or item.state != "absent"'
+
+  - name: Ensure unwanted mapcycle files are deleted
+    file:
+      path: "/home/{{ steamcmd_user }}/cstrike-source/cstrike/cfg/mapcycle_{{ item.name }}.txt"
+      state: absent
+    loop: "{{ cstrike_source_extra_mapcycles }}"
+    loop_control:
+      label: "{{ item.name }}"
+    when: 'item.state is defined and item.state == "absent"'
+  when: 'cstrike_source_extra_mapcycles != []'
+
 - name: Ensure systemd unit is installed
   template:
     src: cstrike-source.service.j2
