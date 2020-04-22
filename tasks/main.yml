@@ -70,6 +70,18 @@
     when: 'item.state is defined and item.state == "absent"'
   when: 'cstrike_source_extra_mapcycles != []'
 
+- block:
+  - name: Ensure extra maps are installed
+    copy:
+      src: "{{ item }}"
+      dest: "/home/{{ steamcmd_user }}/cstrike-source/cstrike/maps/"
+      owner: "{{ steamcmd_user }}"
+      group: "{{ steamcmd_user }}"
+    with_fileglob:
+      - "{{ cstrike_source_extra_maps_directory }}/*.bsp"
+      - "{{ cstrike_source_extra_maps_directory }}/*.nav"
+  when: 'cstrike_source_extra_maps_directory != ""'
+
 - name: Ensure systemd unit is installed
   template:
     src: cstrike-source.service.j2
