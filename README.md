@@ -100,13 +100,23 @@ The `acl` package should be installed on the server.
 
 ```yaml
 - hosts: game
+  vars:
+    cstrike_source_extra_maps_directory: "files/cstrike-source/maps"
+    cstrike_source_server_cfg: |
+      hostname "My Server"
+      sv_password password
+      rcon_password rconpassword
+    cstrike_source_mapcycle: |
+      de_dust2
+      de_aztec
+      cs_office
   pre_tasks:
     - package:
         name: acl
         state: present
   roles:
-  - role: ansible-steamcmd
-  - role: ansible-role-cstrike-source
+    - role: ansible-steamcmd
+    - role: ansible-role-cstrike-source
 ```
 
 # License
