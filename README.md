@@ -18,6 +18,7 @@ An ansible role dedicated to the installation of SteamCMD such as [ansible-steam
 | `cstrike_source_port` | Network port | `27015` |
 | `cstrike_source_ip` | IP address to listen on | `0.0.0.0` |
 | `cstrike_source_extra_mapcycles` | Configuration of extra mapcycle | See below |
+| `cstrike_source_extra_maps_directory` | Directory containing extra bsp and nav files | `""` |
 
 ### `cstrike_source_motd`
 
