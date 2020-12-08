@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: ansible-role-cstrike-source
+  role_name: cstrike-source
   author: Tristan Le Guern
   description: Configure a Counter Strike Source server
   company: Gwern
