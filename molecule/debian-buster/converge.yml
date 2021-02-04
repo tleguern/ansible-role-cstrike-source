@@ -1,0 +1,26 @@
+---
+- name: Converge
+  hosts: all
+  become: yes
+  become_user: root
+  become_method: sudo
+  vars:
+    metamod_source_install_path: /home/steam/cstrike-source/cstrike
+    cstrike_source_ip: 127.0.0.1
+    cstrike_source_mapcycle:
+      - cs_italy
+      - de_dust2
+      - de_aztec
+    cstrike_source_server_cfg: |
+      hostname "SourceHut test Counter-Strike Server"
+      rcon_password srht
+      mp_friendlyfire 1
+      mp_allowNPCs 1
+      mp_autoteambalance 1
+  tasks:
+    - name: "Include aversiste.steamcmd"
+      include_role:
+        name: "aversiste.steamcmd"
+    - name: "Include ansible-role-cstrike-source"
+      include_role:
+        name: "ansible-role-cstrike-source"
