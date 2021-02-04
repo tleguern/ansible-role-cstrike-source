@@ -1,0 +1,24 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Configure rcon
+    copy:
+      dest: ~/.rconrc
+      content: |
+        [srht]
+        hostname = 127.0.0.1
+        port = 27015
+        password = srht
+  - name: Query server status
+    command: rcon --server srht status
+    register: rcon
+  - assert:
+      that:
+        - rcon.rc == 0
+  - set_fact:
+      hostname: "{{ rcon.stdout_lines[0].split(':')[1].strip() }}"
+  - assert:
+      that:
+        - hostname == 'SourceHut test Counter-Strike Server'

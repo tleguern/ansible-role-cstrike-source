@@ -32,3 +32,4 @@ scenario:
     - dependency
     - converge
     - idempotence
+    - verify
