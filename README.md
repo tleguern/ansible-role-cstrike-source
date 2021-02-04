@@ -1,10 +1,14 @@
 # Ansible Role: Counter-Strike: Source
 
+[![builds.sr.ht status](https://builds.sr.ht/~tleguern/ansible-role-cstrike-source.svg)](https://builds.sr.ht/~tleguern/ansible-role-cstrike-source?)
+
 An Ansible role that installs and configures a Counter-Strike: Source dedicated server.
 
 The game server is downloaded thought Steam and exposed as a systemd service for easier management.
 Using this role it is possible to publish a minimalist server with custom maps.
 For more advanced configuration it is necessary to install [Metamod:Source](https://github.com/Aversiste/ansible-role-metamod-source) and [SourceMod](https://github.com/Aversiste/ansible-role-sourcemod).
+
+Automatic testing is provided using molecule's delegated driver and https://builds.sr.ht.
 
 ## Requirements
 
