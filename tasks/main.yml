@@ -2,7 +2,7 @@
 - block:
   - name: Check if Counter-Strike Source dedicated server is installed
     stat:
-      path: "/home/{{ steamcmd_user }}/.steam/SteamApps/common/Counter-Strike Source Dedicated Server"
+      path: "/home/{{ steamcmd_user }}/.steam/steamapps/common/Counter-Strike Source Dedicated Server"
     register: __cstrikesource_exists
 
   - name: Install Counter-Strike Source dedicated server
@@ -18,7 +18,7 @@
 
 - name: Create a symlink to steam home directory
   file:
-    src: "/home/{{ steamcmd_user }}/.steam/SteamApps/common/Counter-Strike Source Dedicated Server"
+    src: "/home/{{ steamcmd_user }}/.steam/steamapps/common/Counter-Strike Source Dedicated Server"
     dest: "/home/{{ steamcmd_user }}/cstrike-source"
     owner: "{{ steamcmd_user }}"
     group: "{{ steamcmd_user }}"
