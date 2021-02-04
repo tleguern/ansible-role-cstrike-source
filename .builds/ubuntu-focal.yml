@@ -1,0 +1,30 @@
+image: ubuntu/focal
+packages:
+  - python3
+  - python3-pip
+  - python3-wheel
+  - python3-setuptools
+  - acl
+  - build-essential # rcon dependencies
+  - cmake
+  - check
+  - libbsd-dev
+  - libglib2.0-dev
+sources:
+  - https://git.sr.ht/~tleguern/ansible-role-cstrike-source
+  - https://github.com/n0la/rcon
+tasks:
+  - pip: |
+      . ./.profile
+      pip3 -q install --user ansible molecule
+  - rcon: |
+      cd rcon
+      mkdir build
+      cd build
+      cmake ..
+      make
+      sudo make install
+  - molecule: |
+      . ./.profile
+      cd ansible-role-cstrike-source
+      molecule test -s ubuntu-focal
