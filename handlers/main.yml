@@ -7,3 +7,4 @@
   service:
     name: cstrike-source
     state: restarted
+  listen: "Restart source games"
