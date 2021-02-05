@@ -8,3 +8,9 @@
     name: cstrike-source
     state: restarted
   listen: "Restart source games"
+
+- name: Stop cstrike-source
+  service:
+    name: cstrike-source
+    state: stopped
+  listen: "Stop source games"
