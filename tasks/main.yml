@@ -72,14 +72,13 @@
 
 - block:
   - name: Ensure extra maps are installed
-    copy:
-      src: "{{ item }}"
-      dest: "/home/{{ steamcmd_user }}/cstrike-source/cstrike/maps/"
-      owner: "{{ steamcmd_user }}"
-      group: "{{ steamcmd_user }}"
-    with_fileglob:
-      - "{{ cstrike_source_extra_maps_directory }}/*.bsp"
-      - "{{ cstrike_source_extra_maps_directory }}/*.nav"
+    synchronize:
+      src: "{{ cstrike_source_extra_maps_directory }}/{{ item }}"
+      dest: "/home/{{ steamcmd_user }}/cstrike-source/cstrike/custom/ansible"
+    loop:
+      - maps
+      - materials
+      - resource
   when: 'cstrike_source_extra_maps_directory != ""'
 
 - name: Ensure systemd unit is installed
