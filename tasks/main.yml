@@ -7,13 +7,13 @@
 
   - name: Install Counter-Strike Source dedicated server
     command: "{{ steamcmd_bin }} +login anonymous +app_update 232330 +validate +quit"
-    when: __cstrikesource_exists.stat.exists == False
+    when: not __cstrikesource_exists.stat.exists
 
   - name: Ensure Counter-Strike Source dedicated server is up to date
     command: "{{ steamcmd_bin }} +login anonymous +app_update 232330 +quit"
     register: __cstrikesource_update
     changed_when: "'already up to date' not in __cstrikesource_update.stdout"
-    when: __cstrikesource_exists.stat.exists == False
+    when: __cstrikesource_exists.stat.exists
   become_user: "{{ steamcmd_user }}"
 
 - name: Create a symlink to steam home directory
