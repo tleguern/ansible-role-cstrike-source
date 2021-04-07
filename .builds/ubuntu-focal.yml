@@ -13,18 +13,18 @@ packages:
 sources:
   - https://git.sr.ht/~tleguern/ansible-role-cstrike-source
   - https://github.com/n0la/rcon
+environment:
+  PATH: "/bin:/usr/bin/:/usr/local/bin:/home/build/.local/bin" 
 tasks:
   - pip: |
-      . ./.profile
-      pip3 -q install --user ansible molecule
+      python3 -m pip install -q ansible
+      python3 -m pip install -q molecule==3.2.4
   - rcon: |
-      cd rcon
-      mkdir build
-      cd build
+      mkdir rcon/build
+      cd rcon/build
       cmake ..
       make
       sudo make install
   - molecule: |
-      . ./.profile
       cd ansible-role-cstrike-source
       molecule test -s ubuntu-focal
