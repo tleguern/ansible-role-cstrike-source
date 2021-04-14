@@ -8,7 +8,7 @@ The game server is downloaded thought Steam and exposed as a systemd service for
 Using this role it is possible to publish a minimalist server with custom maps.
 For more advanced configuration it is necessary to install [Metamod:Source](https://github.com/tleguern/ansible-role-metamod-source) and [SourceMod](https://github.com/tleguern/ansible-role-sourcemod).
 
-Automatic testing is provided using molecule's delegated driver and https://builds.sr.ht.
+Automatic testing is provided using molecule's delegated driver and <https://builds.sr.ht>.
 
 ## Requirements
 
@@ -100,11 +100,11 @@ cstrike_source_extra_mapcycles:
 
 These files can later be used with rcon, using the `mapcyclefile` CVAR.
 
-# Dependencies
+## Dependencies
 
 The `acl` package should be installed on the server.
 
-# Example Playbook
+## Example Playbook
 
 ```yaml
 - hosts: game
@@ -127,7 +127,7 @@ The `acl` package should be installed on the server.
     - role: ansible-role-cstrike-source
 ```
 
-# License
+## License
 
 ISC
 
@@ -135,6 +135,6 @@ ISC
 
 Either send [send GitHub pull requests](https://github.com/tleguern/ansible-role-cstrike-source) or [send patches on SourceHut](https://lists.sr.ht/~tleguern/misc).
 
-# Author Information
+## Author Information
 
 Tristan Le Guern <tleguern@bouledef.eu>
