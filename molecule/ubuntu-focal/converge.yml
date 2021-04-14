@@ -18,9 +18,9 @@
       mp_allowNPCs 1
       mp_autoteambalance 1
   tasks:
-    - name: "Include aversiste.steamcmd"
+    - name: "Include tleguern.steamcmd"
       include_role:
-        name: "aversiste.steamcmd"
+        name: "tleguern.steamcmd"
     - name: "Include ansible-role-cstrike-source"
       include_role:
         name: "ansible-role-cstrike-source"

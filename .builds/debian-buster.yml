@@ -14,7 +14,7 @@ sources:
   - https://git.sr.ht/~tleguern/ansible-role-cstrike-source
   - https://github.com/n0la/rcon
 environment:
-  PATH: "/bin:/usr/bin/:/usr/local/bin:/home/build/.local/bin" 
+  PATH: "/bin:/usr/bin/:/usr/local/bin:/home/build/.local/bin"
 tasks:
   - pip: |
       python3 -m pip install -qU pip

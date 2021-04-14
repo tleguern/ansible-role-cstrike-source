@@ -3,16 +3,8 @@
   hosts: all
   gather_facts: false
   tasks:
-  - name: Configure rcon
-    copy:
-      dest: ~/.rconrc
-      content: |
-        [srht]
-        hostname = 127.0.0.1
-        port = 27015
-        password = srht
   - name: Query server status
-    command: rcon --server srht status
+    command: rcon -p 27015 -H 127.0.0.1 -P srht status
     register: rcon
   - assert:
       that:
