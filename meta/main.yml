@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: cstrike-source
+  role_name: cstrike_source
   author: Tristan Le Guern
   description: Configure a Counter Strike Source server
   company: Gwern
