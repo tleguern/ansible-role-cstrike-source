@@ -70,15 +70,14 @@
       when: 'item.state is defined and item.state == "absent"'
   when: 'cstrike_source_extra_mapcycles != []'
 
-- block:
-    - name: Ensure extra maps are installed
-      synchronize:
-        src: "{{ cstrike_source_extra_maps_directory }}/{{ item }}"
-        dest: "/home/{{ steamcmd_user }}/cstrike-source/cstrike/custom/ansible"
-      loop:
-        - maps
-        - materials
-        - resource
+- name: Ensure extra maps are installed
+  synchronize:
+    src: "{{ cstrike_source_extra_maps_directory }}/{{ item }}"
+    dest: "/home/{{ steamcmd_user }}/cstrike-source/cstrike/custom/ansible"
+  loop:
+    - maps
+    - materials
+    - resource
   when: 'cstrike_source_extra_maps_directory != ""'
 
 - name: Ensure systemd unit is installed
