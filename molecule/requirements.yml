@@ -2,4 +2,4 @@
 roles:
   - src: https://github.com/tleguern/ansible-steamcmd.git
     name: tleguern.steamcmd
-    version: master
+    version: v1.1.0
