@@ -13,6 +13,7 @@ Automatic testing is provided using molecule's delegated driver and <https://bui
 ## Requirements
 
 An ansible role dedicated to the installation of SteamCMD such as [ansible-steamcmd](https://github.com/tleguern/ansible-steamcmd).
+This role should provide the `steam_home` variable, pointing to such a folder as `/home/steam/Steam` or `/home/steam/.steam` depending on your operating system.
 
 ## Role Variables
 
