@@ -4,7 +4,7 @@
 
 An Ansible role that installs and configures a Counter-Strike: Source dedicated server.
 
-The game server is downloaded thought Steam and exposed as a systemd service for easier management.
+The game server is downloaded through Steam and exposed as a systemd service for easier management.
 Using this role it is possible to publish a minimalist server with custom maps.
 For more advanced configuration it is necessary to install [Metamod:Source](https://github.com/tleguern/ansible-role-metamod-source) and [SourceMod](https://github.com/tleguern/ansible-role-sourcemod).
 
@@ -12,7 +12,7 @@ Automatic testing is provided using molecule's delegated driver and <https://bui
 
 ## Requirements
 
-An ansible role dedicated to the installation of SteamCMD such as [ansible-steamcmd](https://github.com/tleguern/ansible-steamcmd).
+An ansible role dedicated to the installation of SteamCMD such as [tleguern.steamcmd](https://github.com/tleguern/ansible-steamcmd).
 This role should provide the `steam_home` variable, pointing to such a folder as `/home/steam/Steam` or `/home/steam/.steam` depending on your operating system.
 
 The collection `ansible.posix`.
@@ -126,8 +126,8 @@ The `acl` package should be installed on the server.
         name: acl
         state: present
   roles:
-    - role: ansible-steamcmd
-    - role: ansible-role-cstrike-source
+    - role: tleguern.steamcmd
+    - role: tleguern.cstrike_source
 ```
 
 ## License
